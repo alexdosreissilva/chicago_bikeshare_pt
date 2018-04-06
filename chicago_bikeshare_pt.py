@@ -32,7 +32,7 @@ print("\n\nTAREFA 1: Imprimindo as primeiras 20 amostras")
 # Vamos mudar o data_list para remover o cabeçalho dele.
 data_list = data_list[1:]
 
-samples = data_list[1:21]
+samples = data_list[:20]
 
 for sample in samples:
     print(sample)
@@ -124,12 +124,12 @@ def count_gender(data_list):
     male = 0
     female = 0
 
-    for sample in data_list:
-        gender = sample[-2]
-        if gender == "Male":
-            male += 1
-        elif gender == "Female":
-            female += 1
+    for sample in data_list: # Iterate for list saved in the variable data_list
+        gender = sample[-2] # Save the gender value in the variable gender
+        if gender == "Male": # Check if the value in the variable gender equals "Male"
+            male += 1 # Increase one in the value the variable male
+        elif gender == "Female": # Check if the value in the variable gender equals "Female"
+            female += 1 # Increase one in the value the variable female
 
     return [male, female]
 
@@ -253,21 +253,41 @@ max_trip = 0.
 mean_trip = 0.
 median_trip = 0.
 
+# Iterate for list saved in the variable trip_duration_list
 for index, duration in enumerate(trip_duration_list):
+    # Convert the string in the iteration variable duration for a data the float type and
+    # save the result in the same iteration variable.
     duration = float(duration)
+    # Change the list value in the current index
+    # for iteration variable converted to the float type.
     trip_duration_list[index] = duration
+    # Add the value of iteration variable in the value the variable mean_trip
     mean_trip += duration
 
+# Order the list in the variable trip_duration_list
 trip_duration_list.sort()
+# Assign the first value of list in the variable trip_duration_list the min_trip variable
 min_trip = trip_duration_list[0]
+# Assign the last value of list in the variable trip_duration_list the max_trip variable
 max_trip = trip_duration_list[-1]
+# Assign the average the values in the list save in the trip_duration_list variable
+# the mean_trip variable
 mean_trip = mean_trip / len(trip_duration_list)
 
+# Check if the list size in the variable trip_duration_list is even
 if len(trip_duration_list) % 2 == 0:
+    # Assign to half of list size in the variable trip_duration_list the index variable
+    # and convert to integer
     index = int(len(trip_duration_list) / 2)
+    # Sum the two values in the medium of list save in the variable trip_duration_list
+    # and divide the result per two and assign the division the median_trip variable
     median_trip = (trip_duration_list[index] + trip_duration_list[index + 1]) / 2
-else:
+else: # If the list size is not even then it is odd
+    # Assign to half of list size in the variable trip_duration_list the index variable
+    # and convert to integer
     index = int(len(trip_duration_list) / 2)
+    # Assign the value in the list medium in the variable trip_duration_list
+    # the median_trip variable
     median_trip = trip_duration_list[index]
 
 
@@ -316,6 +336,14 @@ print("Você vai encarar o desafio? (yes ou no)")
 answer = "yes"
 
 def count_items(column_list):
+    """
+        Function that return the quantity of types gender in the
+        list and the quantity of each.
+        Arguments:
+            column_list: The list.
+        Return:
+           The quantity of types gender in the list and the quantity of each.
+    """
     item_types = []
     count_items = []
 
